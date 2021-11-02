@@ -20,18 +20,22 @@ async def check(ctx, cookie):
     credit = requests.get("https://billing.roblox.com/v1/credit", cookies={'.ROBLOSECURITY': str(cookie)}).json()['balance']
     userdata = requests.get("https://users.roblox.com/v1/users/authenticated",cookies={".ROBLOSECURITY":cookie}).json() #get user data
     birthday = requests.get("https://accountinformation.roblox.com/v1/birthdate", cookies={'.ROBLOSECURITY': str(cookie)}).json()
-    print(birthday)
+    followers = requests.get("https://friends.roblox.com/v1/users/418307011/followers/count", cookies={'.ROBLOSECURITY': str(cookie)}).json()['count']
     userid = userdata['id'] #user id
     transactions = requests.get(f"https://economy.roblox.com/v2/users/{userid}/transaction-totals?timeFrame=Month&transactionType=summary", cookies={'.ROBLOSECURITY': str(cookie)}, data={'timeFrame':'Month', 'transactionType': 'summary'}).json()
     pending = transactions['pendingRobuxTotal']
     stipends = transactions['premiumStipendsTotal']
     devEx = transactions['developerExchangeTotal']
     groupIds = []
-    for i in requests.get(f"https://groups.roblox.com/v1/users/{userid}/groups/roles", cookies={'.ROBLOSECURITY': str(cookie)}).json()['data']:
+    groups = requests.get(f"https://groups.roblox.com/v1/users/{userid}/groups/roles", cookies={'.ROBLOSECURITY': str(cookie)})
+    for i in groups.json()['data']:
       groupIds.append(i['group']['id'])
     groupFunds = 0
     for i in groupIds:
-      groupFunds = groupFunds + int(requests.get(f"https://economy.roblox.com/v1/groups/{i}/currency", cookies={'.ROBLOSECURITY': str(cookie)}).json()['robux'])
+      if 'robux' in groups.text:
+        groupFunds = groupFunds + int(requests.get(f"https://economy.roblox.com/v1/groups/{i}/currency", cookies={'.ROBLOSECURITY': str(cookie)}).json()['robux'])
+      else:
+        groupFunds = 0
     creationDate = requests.get(f'https://users.roblox.com/v1/users/{userid}').json()['created']
     display = userdata['displayName'] #display name
     username = userdata['name'] #username
