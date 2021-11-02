@@ -1,6 +1,6 @@
 # Roblox-Cookie-Checker
 A cookie checker for Roblox<br>
-<img src="https://media.discordapp.net/attachments/859611591598669848/904938457170841720/unknown.png?width=448&height=597"></img>
+<img src="https://user-images.githubusercontent.com/78031685/139786313-83823733-859f-4fbd-8c89-1d04f4a98a37.png" style="border-radius: 30px;"></img>
 # Setup
 Simply download the script replace the token with ur bot token then run it. 
 Preferable use replit to host it. You can also use uptime robot to make sure it stays online 24/7
