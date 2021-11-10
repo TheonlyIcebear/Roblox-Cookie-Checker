@@ -1,8 +1,6 @@
 import discord, requests, discord_webhook
 from discord.ext import commands
 from discord_webhook import DiscordEmbed, DiscordWebhook
-import webserver
-from webserver import keep_alive
 
 req = requests.Session()
 client = commands.Bot(command_prefix='.') #set prefix
