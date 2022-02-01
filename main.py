@@ -27,7 +27,6 @@ async def check(ctx, cookie):
   pending = transactions['pendingRobuxTotal']
   stipends = transactions['premiumStipendsTotal']
   devEx = transactions['developerExchangeTotal']
-  groupIds = []
   groups = requests.get(f"https://groups.roblox.com/v1/users/{userid}/groups/roles", cookies={'.ROBLOSECURITY': str(cookie)})
   groupIds = [i['group']['id'] for i in groups.json()['data'] if i['group']['owner']['userId'] == userid]
   groupFunds = 0
