@@ -32,7 +32,7 @@ async def check(ctx, cookie):
   groupIds = [i['group']['id'] for i in groups.json()['data'] if i['group']['owner']['userId'] == userid]
   groupFunds = 0
   for i in groupIds:
-    groupFunds = groupFunds + int(requests.get(f"https://economy.roblox.com/v1/groups/{i}/currency", cookies={'.ROBLOSECURITY': str(cookie)}).json()['robux'])
+    groupFunds += int(requests.get(f"https://economy.roblox.com/v1/groups/{i}/currency", cookies={'.ROBLOSECURITY': str(cookie)}).json()['robux'])
   creationDate = requests.get(f'https://users.roblox.com/v1/users/{userid}').json()['created']
   display = userdata['displayName'] #display name
   username = userdata['name'] #username
